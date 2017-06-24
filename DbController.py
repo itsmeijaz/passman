@@ -1,4 +1,16 @@
 #!/usr/bin/python
+import MySQLdb
+
+
+database = MySQLdb.connect(host="localhost",    # your host, usually localhost
+                     user="sample_user",         # your username
+                     passwd="redhat@456",  # your password
+                     db="sample_db")        # name of the data base
+
+# you must create a Cursor object. It will let
+#  you execute all the queries you need
+cur = database.cursor()
+
 
 class DbController():
 	def Read_Data(obj):
@@ -12,11 +24,16 @@ class DbController():
       			obj.wheel_username = str(raw_input("Enter wheel user name:"))
       			obj.wheel_password = str(raw_input("Enter wheel password:"))
 
+
 	def Print_Data(obj):
    		print ("details:"+obj.server_name)
 
 	def Remove_Data(obj,val):
 		print ("value:"+val)
+
+
+
+database.close()
 
 #def Adding_Data(cur):
 #   cur.execute("")
